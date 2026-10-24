@@ -16,8 +16,10 @@ Braucht nur Python (keine zusätzlichen Pakete).
 
 ## Installer wechseln
 
-1. Neue Setup-Datei (z.B. `ClickTracker-Setup-0.3.5.exe`) in den Ordner **`downloads/`** legen.
-2. Fertig – die Website zeigt automatisch die höchste Version an (Version, Grösse und Datum werden aus der Datei gelesen).
+**GitHub-Release (aktuell):** In `config.js` `installerUrl` und `version` auf das neue Release setzen. Fertig.
+
+**Lokal:** `installerUrl` auf `""` setzen und die neue Setup-Datei (z.B. `ClickTracker-Setup-0.5.1.exe`) in den Ordner **`downloads/`** legen.
+Dann zeigt die Website automatisch die höchste Version an (Version, Grösse und Datum werden aus der Datei gelesen).
 
 Eine bestimmte Version erzwingen: in **`config.js`** statt `"auto"` den Dateinamen eintragen.
 Alte Versionen im Ordner `downloads/` erscheinen auf der Download-Seite unter „Ältere Versionen“

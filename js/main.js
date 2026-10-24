@@ -89,6 +89,12 @@
   }
 
   async function loadInstallers() {
+    // Installer liegt als GitHub-Release (externe URL) – siehe config.js
+    if (cfg.installerUrl) {
+      const file = decodeURIComponent(cfg.installerUrl.split("/").pop().split("?")[0]);
+      return { current: { file, url: cfg.installerUrl, version: cfg.version || versionOf(file) }, all: [] };
+    }
+
     let list = null;
     try {
       const res = await fetch("api/installers", { cache: "no-store" });
@@ -108,7 +114,7 @@
   }
 
   loadInstallers().then(({ current, all }) => {
-    const href = current.file ? DOWNLOAD_DIR + encodeURIComponent(current.file) : null;
+    const href = current.url || (current.file ? DOWNLOAD_DIR + encodeURIComponent(current.file) : null);
 
     document.querySelectorAll("[data-installer-link]").forEach((a) => {
       if (href && !current.missing) {
